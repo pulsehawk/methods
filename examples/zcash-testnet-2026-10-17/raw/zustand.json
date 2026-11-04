@@ -1,0 +1,64 @@
+{
+ "aktiv_gesehen_utc": "2026-10-17T15:14:55Z",
+ "proben": {
+  "0": {
+   "anteil_prozent": 57.1,
+   "hoehe": 4512127,
+   "peers": 14,
+   "utc": "2026-10-17 15:14:57",
+   "versionen": {
+    "170180": 8,
+    "170190": 6
+   },
+   "vor_upgrade": 8
+  },
+  "1": {
+   "anteil_prozent": 53.3,
+   "hoehe": 4512262,
+   "peers": 15,
+   "utc": "2026-10-17 16:14:57",
+   "versionen": {
+    "170180": 8,
+    "170190": 7
+   },
+   "vor_upgrade": 8
+  }
+ },
+ "signale": {
+  "blockpause": {
+   "episode_gemeldet": true,
+   "gemeldet_stufe": "alarm",
+   "gemeldet_utc": "2026-10-17T20:31:57Z",
+   "seit": 1792268817.452,
+   "stufe": "alarm"
+  },
+  "eigene_sicht": {
+   "episode_gemeldet": false,
+   "gemeldet_stufe": null,
+   "gemeldet_utc": null,
+   "seit": null,
+   "stufe": null
+  },
+  "kettenspaltung": {
+   "episode_gemeldet": false,
+   "gemeldet_stufe": null,
+   "gemeldet_utc": null,
+   "seit": null,
+   "stufe": null
+  },
+  "median_abstand": {
+   "episode_gemeldet": false,
+   "gemeldet_stufe": null,
+   "gemeldet_utc": null,
+   "seit": null,
+   "stufe": null
+  },
+  "reorg": {
+   "episode_gemeldet": false,
+   "gemeldet_stufe": null,
+   "gemeldet_utc": null,
+   "seit": null,
+   "stufe": null
+  }
+ }
+}
