@@ -1,0 +1,16 @@
+{
+ "chain": "zcash-testnet-example",
+ "upgrade": {
+  "name": "nu7-example",
+  "height": 4512127,
+  "height_source": "example only: activation placed inside the recording of 17 Oct 2026, not the real testnet activation",
+  "estimate_utc": "2026-10-17T14:51:43Z",
+  "band_utc": ["2026-10-17T14:00:00Z", "2026-10-17T16:00:00Z"]
+ },
+ "target_before_s": 25,
+ "target_after_s": 25,
+ "target_source": "zcash testnet has run with 25 s blocks since its NU7 activation on 4 Oct 2026 (ZIP 218)",
+ "min_protocol": 170190,
+ "fork": {"min_peers": 2, "min_depth": 2},
+ "probes_h": [0, 1]
+}
