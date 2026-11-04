@@ -1,6 +1,6 @@
 # Methods
 
-Version 1.0 of the PulseHawk upgrade report. Each metric of the report names the method it was counted with. The method ids are stable: a change to a method gets a new version in this file and in the script (`VERSION`), never a silent edit.
+Version 1.0 of the PulseHawk upgrade report. Each metric of the report names the method it was counted or computed with. The method ids are stable: a change to a method gets a new version in this file and in the script (`VERSION`), never a silent edit.
 
 ## PH-M-001 Block intervals from headers
 
@@ -40,9 +40,36 @@ Version 1.0 of the PulseHawk upgrade report. Each metric of the report names the
 
 **Time base.** Arrival at our listener, from the host clock.
 
+## PH-M-005 Stale blocks after 6 confirmations
+
+**Input.** As PH-M-004, plus our header chain.
+
+**Procedure.** A block counts as stale when it was announced to us and is not in our chain 6 blocks later. The share is stale blocks over chain blocks plus stale blocks.
+
+**Used for.** not in the upgrade report v1. The implementation follows in this repository.
+
+## PH-M-006 Forecast of the activation time
+
+**Input.** Our header chain up to the tip at the time of the forecast.
+
+**Procedure.** The remaining blocks up to the activation height are drawn many times with replacement from the counted intervals of a recent window, and the drawn intervals are added up. The median of the sums is the estimate, the 5 % and 95 % points form the 90 % band. The window and the number of draws are stated with each forecast.
+
+**Used for.** the estimate rows of M7, which are computed, not counted. The implementation follows in this repository.
+
 ## M6 in specification v1.0
 
 Time to stable is the first time, at the earliest 60 min after the activation block, from which the rolling mean of the intervals of the last 60 min stays within plus or minus 20 % of the target for 60 min without a break, where those 60 min must lie fully inside the data. The value is in seconds after the header time of the activation block. A rolling median within 10 % of the target was tested first and rejected: with exponential intervals the median lies at about 69 % of the target, and a simulated ideal 25 s chain was inside that band only 1.7 % of the time.
+
+## Validation so far
+
+| Method | Validation |
+|---|---|
+| PH-M-001 | every header fetch is cross checked with two further peers, 500 of 500 hashes equal (Zcash mainnet 2 Nov 2026, BCH tempnet 28 Oct 2026) |
+| PH-M-002 | replay of the watch against our Zcash testnet recording of 17 Oct 2026, with built in switches and splits |
+| PH-M-003 | the same replay; no independent comparison yet |
+| PH-M-004 | comparison with the public data of another tempnet listener on 28 Oct 2026, 4,207 blocks matched by hash |
+| PH-M-005 | the same comparison; the two counts measure different things, see the method |
+| PH-M-006 | none yet; the NU7 activation on mainnet is the first check against the forecast |
 
 ## Measurement uncertainty
 

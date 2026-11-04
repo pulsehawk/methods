@@ -28,7 +28,7 @@ For the Zcash mainnet NU7 report, the inputs are in `data/zcash-mainnet-nu7/` on
 |---|---|
 | `upgrade_report/report_v1.py` | raw values M1 to M7 of the upgrade report, specification v1.0 |
 | `upgrade_report/configs/` | one config per chain and upgrade |
-| `METHODS.md` | the named methods PH-M-001 to PH-M-004, uncertainty and traceability |
+| `METHODS.md` | the named methods PH-M-001 to PH-M-006, uncertainty and traceability |
 | `FORMATS.md` | the input and output formats |
 | `ROUND_ROBIN.md` | how a third party counts one metric with their own data |
 | `tools/heads_from_rpc.py` | heads CSV from your own node, for the round robin |

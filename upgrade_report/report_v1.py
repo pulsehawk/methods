@@ -12,7 +12,7 @@ Per network upgrade:
       +-20 % of the target, held for 60 min that lie fully inside
       the data; seconds after the activation block's header time  (PH-M-001)
   M7  first block at the activation height: header time, first
-      seen by our listener, offset to our estimate                (PH-M-001, PH-M-004)
+      seen by our listener, offset to our estimate                (PH-M-001, PH-M-004, PH-M-006)
 
 Every row carries its kind:
   counted   counted by us from our own data
@@ -319,13 +319,13 @@ def build(cfg, heads_path, raw_dir):
         row("M7", "first_block_first_seen", "missing", "UTC", "counted", "PH-M-004", "", "", "", "",
             "no listener data")
     if estimate is not None:
-        row("M7", "estimate", utc(estimate), "UTC", "computed", "PH-M-001", "", "", "", "our forecast",
+        row("M7", "estimate", utc(estimate), "UTC", "computed", "PH-M-006", "", "", "", "our forecast",
             f"90 % band {band[0]} to {band[1]}" if band else "")
-        row("M7", "header_time_minus_estimate", round(t_head - estimate), "s", "computed", "PH-M-001", "", "", 1, "",
+        row("M7", "header_time_minus_estimate", round(t_head - estimate), "s", "computed", "PH-M-006", "", "", 1, "",
             "positive means later than estimated")
         if band:
             row("M7", "in_band", "yes" if ts(band[0]) <= t_head <= ts(band[1]) else "no", "", "computed",
-                "PH-M-001", band[0], band[1], 1, "", "")
+                "PH-M-006", band[0], band[1], 1, "", "")
 
     # ------------------------------------------------ uncertainty, one row per metric
     clock = ("header times are set by miners within the consensus rules and are not a clock; "
@@ -361,7 +361,7 @@ def build(cfg, heads_path, raw_dir):
                     "missing_data": win["after"][5] and f"{win['after'][5]} heights missing" or "none",
                     "gaps": "the 60 min hold must lie fully inside the data",
                     "peers": "as M1", "note": "the rolling mean of a 60 min window is noisy; see METHODS.md"})
-    unc.append({"metric": "M7", "method": "PH-M-001 PH-M-004", "time_base": "header time and arrival at our listener",
+    unc.append({"metric": "M7", "method": "PH-M-001 PH-M-004 PH-M-006", "time_base": "header time and arrival at our listener",
                 "clock": clock + "; " + lclock,
                 "missing_data": "first seen is missing if the listener was not connected at activation",
                 "gaps": "", "peers": f"{len(peers_meta)} peer connections in the raw data" if peers_meta else "",
