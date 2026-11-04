@@ -4,8 +4,8 @@
   "name": "nu7",
   "height": 3543405,
   "height_source": "ZIP 259; Zebra v7.0.0 zebra-chain/src/parameters/constants.rs line 106; zcash_protocol 0.11.0 src/consensus.rs line 567",
-  "estimate_utc": "2026-11-06T02:39:52Z",
-  "band_utc": ["2026-11-06T00:28:23Z", "2026-11-06T05:00:17Z"]
+  "estimate_utc": "2026-11-06T02:40:58Z",
+  "band_utc": ["2026-11-06T01:14:45Z", "2026-11-06T04:07:28Z"]
  },
  "target_before_s": 75,
  "target_after_s": 25,

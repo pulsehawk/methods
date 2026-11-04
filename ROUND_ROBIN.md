@@ -1,4 +1,4 @@
-# Round robin: count M1 after activation with your own data
+# Round robin, counting M1 after activation with your own data
 
 We ask a third party to count one metric of our report with their own node, independent of our data, and publish both numbers side by side.
 
@@ -6,15 +6,15 @@ We ask a third party to count one metric of our report with their own node, inde
 
 M1, the median block interval after activation (`p50_after` in our report CSV), method PH-M-001.
 
-- Window: every block from the activation height up to, but not including, the first block whose header time is 72 h or more after the header time of the activation block.
-- Interval of block h: header time of h minus header time of h minus 1, in seconds. The interval of the activation block itself counts.
-- Median: linear interpolation between the two middle values, so an even count gives the mean of the two middle values.
+- **Window.** Every block from the activation height up to, but not including, the first block whose header time is 72 h or more after the header time of the activation block.
+- **Interval of block h.** Header time of h minus header time of h minus 1, in seconds. The interval of the activation block itself counts.
+- **Median.** Linear interpolation between the two middle values, so an even count gives the mean of the two middle values.
 
 For Zcash NU7 the activation height is 3,543,405 and the target after activation is 25 s.
 
 ## How to count it
 
-With your own Zcash node (zcashd or Zebra) and its JSON-RPC port:
+With your own Zcash node (zcashd or Zebra) and its JSON-RPC port, run
 
 ```
 export RPC_URL=http://127.0.0.1:8232

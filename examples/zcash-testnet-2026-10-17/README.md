@@ -1,4 +1,4 @@
-# Example: Zcash testnet, 17 Oct 2026
+# Example, Zcash testnet on 17 Oct 2026
 
 A short excerpt of our own data, so the report script can be checked end to end in a few seconds.
 
@@ -15,9 +15,9 @@ A short excerpt of our own data, so the report script can be checked end to end 
 
 **What is real and what is not.**
 
-- Real: the heads, the announcements, the headers and the connections are as recorded.
-- Not real: the activation. Height 4,512,127 lies inside the recording and stands in for an upgrade. The real testnet NU7 activation was at height 4,465,026 on 4 Oct 2026.
-- Example values: the estimate and its band in `config.json` only exercise the M7 rows. The probe times are 0 and 1 h, because the recording is only 5.5 h long.
-- Replay: the log and the state come from replaying the recording through our watch. The replay ran 40 min past the end of the recording, and its last two log rows, both after 20:21:43 utc, are removed because they only reflect the end of the recording.
+- **Real.** The heads, the announcements, the headers and the connections are as recorded.
+- **Not real.** The activation. Height 4,512,127 lies inside the recording and stands in for an upgrade. The real testnet NU7 activation was at height 4,465,026 on 4 Oct 2026.
+- **Example values.** The estimate and its band in `config.json` only exercise the M7 rows. The probe times are 0 and 1 h, because the recording is only 5.5 h long.
+- **Replay.** The log and the state come from replaying the recording through our watch. The replay ran 40 min past the end of the recording, and its last two log rows, both after 20:21:43 utc, are removed because they only reflect the end of the recording.
 
 **What the example shows.** The listener covers only 5.5 h, so the uncertainty CSV reports most chain blocks of the before window as never announced to us. That is what it is for.

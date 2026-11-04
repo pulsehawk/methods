@@ -36,7 +36,7 @@ For the Zcash mainnet NU7 report, the inputs are in `data/zcash-mainnet-nu7/` on
 
 ## Principles
 
-We do not claim any accreditation. We work along the same lines as a test laboratory: every number comes from a named method, every metric states its uncertainty, every input can be traced by its sha256, and we invite others to count the same metric with their own data.
+We do not claim any accreditation. We work along the same lines as a test laboratory. Every number comes from a named method, every metric states its uncertainty, every input can be traced by its sha256, and we invite others to count the same metric with their own data.
 
 Every number in a report carries its kind. counted is counted by us from our own data, source is taken from a named outside source, computed comes from a model, an estimate or a difference to an estimate.
 

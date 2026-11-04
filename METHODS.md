@@ -1,6 +1,6 @@
 # Methods
 
-Version 1.0 of the PulseHawk upgrade report. Each metric of the report names the method it was counted or computed with. The method ids are stable: a change to a method gets a new version in this file and in the script (`VERSION`), never a silent edit.
+Version 1.0 of the PulseHawk upgrade report. Each metric of the report names the method it was counted or computed with. The method ids are stable. A change to a method gets a new version in this file and in the script (`VERSION`), never a silent edit.
 
 ## PH-M-001 Block intervals from headers
 
@@ -58,7 +58,7 @@ Version 1.0 of the PulseHawk upgrade report. Each metric of the report names the
 
 ## M6 in specification v1.0
 
-Time to stable is the first time, at the earliest 60 min after the activation block, from which the rolling mean of the intervals of the last 60 min stays within plus or minus 20 % of the target for 60 min without a break, where those 60 min must lie fully inside the data. The value is in seconds after the header time of the activation block. A rolling median within 10 % of the target was tested first and rejected: with exponential intervals the median lies at about 69 % of the target, and a simulated ideal 25 s chain was inside that band only 1.7 % of the time.
+Time to stable is the first time, at the earliest 60 min after the activation block, from which the rolling mean of the intervals of the last 60 min stays within plus or minus 20 % of the target for 60 min without a break, where those 60 min must lie fully inside the data. The value is in seconds after the header time of the activation block. A rolling median within 10 % of the target was tested first and rejected. With exponential intervals the median lies at about 69 % of the target, and a simulated ideal 25 s chain was inside that band only 1.7 % of the time.
 
 ## Validation so far
 
@@ -83,7 +83,7 @@ For every metric the script writes one row to the uncertainty CSV with five fiel
 | gaps | pauses without any announcement longer than 600 s in the listener data |
 | peers | the number of distinct peers behind the value |
 
-The quantiles of M1 are exact for the chain in the window. Their uncertainty is in the window, not in the counting: the window edges follow header times.
+The quantiles of M1 are exact for the chain in the window. Their uncertainty is in the window, not in the counting. The window edges follow header times.
 
 ## Traceability
 
