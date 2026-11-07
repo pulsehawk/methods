@@ -20,7 +20,7 @@ cd out && sha256sum -c report-v1-zcash-testnet-example-nu7-example.sha256
 
 The example is a short excerpt of the Zcash testnet, from our own header chain and our own listener on 17 Oct 2026. It places a pretend activation at height 4,512,127 inside that recording, so the example is not a statement about the real testnet upgrade. See `examples/zcash-testnet-2026-10-17/README.md`.
 
-For the Zcash mainnet NU7 report, the inputs are in `data/zcash-mainnet-nu7/` once the measurement window has closed. The report names the commit of this repository and the sha256 of every input it was computed with.
+The block intervals around the Zcash NU7 activation are in `data/zcash-nu7/`, the testnet from 4 to 18 Oct 2026 and the first 250 mainnet intervals after activation. The inputs of the full mainnet report follow there once the measurement window has closed. The report names the commit of this repository and the sha256 of every input it was computed with.
 
 ## What is here
 
@@ -33,6 +33,7 @@ For the Zcash mainnet NU7 report, the inputs are in `data/zcash-mainnet-nu7/` on
 | `ROUND_ROBIN.md` | how a third party counts one metric with their own data |
 | `tools/heads_from_rpc.py` | heads CSV from your own node, for the round robin |
 | `examples/` | small example inputs with the expected sha256 |
+| `data/zcash-nu7/` | block intervals around the Zcash NU7 activation, testnet and mainnet, with sha256 |
 
 ## Principles
 
