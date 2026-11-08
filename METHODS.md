@@ -52,9 +52,9 @@ Version 1.0 of the PulseHawk upgrade report. Each metric of the report names the
 
 **Input.** Our header chain up to the tip at the time of the forecast.
 
-**Procedure.** The remaining blocks up to the activation height are drawn many times with replacement from the counted intervals of a recent window, and the drawn intervals are added up. The median of the sums is the estimate, the 5 % and 95 % points form the 90 % band. The window and the number of draws are stated with each forecast.
+**Procedure.** The remaining blocks up to the activation height are drawn many times with replacement from the counted intervals of a recent window, and the drawn intervals are added up. The median of the sums is the forecast, the 5 % and 95 % points form the 90 % band. The window and the number of draws are stated with each forecast.
 
-**Used for.** the estimate rows of M7, which are computed, not counted. The implementation follows in this repository.
+**Used for.** the forecast rows of M7 (keys `estimate` and `header_time_minus_estimate` in format v1), which are computed, not counted. The implementation follows in this repository.
 
 ## M6 in specification v1.0
 
