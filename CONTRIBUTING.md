@@ -118,7 +118,7 @@ This repository has no `CHANGELOG.md`. Its role is played by `METHODS.md` and `F
 
 - a change to how a metric is counted, to a method or to a file format updates `METHODS.md` or `FORMATS.md` in the same commit,
 - a change that alters published numbers gets a new method version, and the old version stays documented, so that every published report can still be reproduced from the commit it names,
-- every number keeps its kind. counted is counted from our own data, source is taken from a named outside source, computed comes from a model or an estimate.
+- every number keeps its kind. counted is counted from our own data, source is taken from a named outside source, computed comes from a model or a forecast.
 
 ## Coding Style
 

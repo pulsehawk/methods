@@ -12,12 +12,12 @@ Per network upgrade:
       +-20 % of the target, held for 60 min that lie fully inside
       the data; seconds after the activation block's header time  (PH-M-001)
   M7  first block at the activation height: header time, first
-      seen by our listener, offset to our estimate                (PH-M-001, PH-M-004, PH-M-006)
+      seen by our listener, offset to our forecast                (PH-M-001, PH-M-004, PH-M-006)
 
 Every row carries its kind:
   counted   counted by us from our own data
   source    taken from a named outside source
-  computed  computed from a model, an estimate, or a difference to an estimate
+  computed  computed from a model, a forecast, or a difference to a forecast
 plus the method id, the window in UTC and n. The CSV gets a .sha256 file in
 sha256sum format, and a second CSV lists the measurement uncertainty per
 metric. See METHODS.md and FORMATS.md.
