@@ -41,6 +41,22 @@ We do not claim any accreditation. We work along the same lines as a test labora
 
 Every number in a report carries its kind. counted is counted by us from our own data, source is taken from a named outside source, computed comes from a model, a forecast or a difference to a forecast.
 
+## History
+
+The scripts were written in our working repository and published here between 4 and 9 Nov 2026. The first commit in this repository is from 4 Nov 2026.
+
+Results we published with a date, all times in utc.
+
+| Date | Result | Link |
+|---|---|---|
+| 15 Oct 2026, 15:52 | forum post, plan and method for an independent count of the NU7 testnet | [NU7 timeline #24](https://forum.zcashcommunity.com/t/nu7-timeline/57655/24) |
+| 18 Oct 2026, 07:36 | forum post, final counts on the NU7 testnet, blocks 4,465,026 to 4,514,228 | [NU7 timeline #26](https://forum.zcashcommunity.com/t/nu7-timeline/57655/26) |
+| 22 Oct 2026, 11:02 | forum post, CSV of every testnet block interval | [NU7 timeline #29](https://forum.zcashcommunity.com/t/nu7-timeline/57655/29) |
+| 29 Oct 2026, 23:18 | forum post, forecast of the mainnet activation time | [NU7 timeline #33](https://forum.zcashcommunity.com/t/nu7-timeline/57655/33) |
+| 6 Nov 2026, 09:04 | forum post, activation at height 3,543,405 counted | [NU7 timeline #35](https://forum.zcashcommunity.com/t/nu7-timeline/57655/35) |
+| from 22 Oct 2026 | track record, every published value with its date and result | [pulsehawk.io/track-record](https://pulsehawk.io/track-record) |
+| window to 9 Nov 2026 | upgrade report PH-UR-2026-001, Zcash NU7, method v1.0 | [pulsehawk.io/reports/zcash-nu7](https://pulsehawk.io/reports/zcash-nu7) |
+
 ## License
 
 MIT, see `LICENSE`.
