@@ -16,6 +16,42 @@ One row per height, written by our header client, gzip compressed. The report al
 
 The chain must be continuous over the windows of the report. The uncertainty CSV counts missing heights.
 
+## Heads meta (`heads-meta.json`)
+
+Written by `headers/ph_headers.py` next to the heads CSV.
+
+| Key | Meaning |
+|---|---|
+| `method` | `PH-M-001` |
+| `network` | chain profile, for example `zcash-mainnet` or `bch-tempnet` |
+| `fetched_utc` | time of the fetch |
+| `start_height` | the known start point, the first row is the height after it |
+| `first_height`, `tip_height`, `tip_hash` | range of the CSV |
+| `fixed_points` | heights the profile fixes or excludes |
+| `checkpoints_checked` | number of published checkpoints inside the range that matched |
+| `target_height`, `target_from_peers`, `probes_refused` | the target height, from how many peers on this chain, and how many probes were on another chain |
+| `forks_dropped` | branches we dropped, with fork height and length |
+| `cross_checks` | per further peer `software`, `compared`, `equal`, `peer_tip` |
+| `cross_checks_without_answer` | further peers that did not answer |
+| `peer_software` | software of every peer used, without version comment |
+| `csv_sha256` | sha256 of the heads CSV |
+
+Our older heads meta files carry German keys with the same content (`abruf_utc`, `spitze_hoehe`, `gegenproben` with `verglichen` and `gleich`).
+
+## Raw header fixture (`headers/fixtures/*.json`)
+
+Raw headers as they came from a peer, so anyone can check them offline with `python3 headers/ph_headers.py --check-raw FILE`.
+
+| Key | Meaning |
+|---|---|
+| `network` | chain profile |
+| `fetched_utc` | time of the fetch |
+| `anchor_height`, `anchor_hash` | the known header before the first one |
+| `last_hash` | hash of the last header, in display order |
+| `headers` | the raw headers in hex, in height order (80 bytes for Bitcoin Cash, with the Equihash solution for Zcash) |
+
+`headers/fixtures/SHA256SUMS` lists the sha256 of each fixture and of the heads CSV made from it.
+
 ## Watch log (`wache-log.csv`)
 
 One row per change of state of the watch. Lines end with `\r\n`, because the file is written with Python's csv module.

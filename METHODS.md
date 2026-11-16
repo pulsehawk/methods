@@ -12,6 +12,17 @@ Version 1.0 of the PulseHawk upgrade report. Each metric of the report names the
 
 **Time base.** Header times. Miners set them within the consensus rules, so they are not a clock and need not increase. The report counts negative intervals.
 
+**Implementation.** `headers/ph_headers.py`, one header client for Zcash and Bitcoin Cash. The two networks differ in their parameters, in the header layout and in their fixed points, the procedure is the same.
+
+- Peers are given on the command line as DNS seed names or as a file. The repository holds no address, and the client prints no address or host name. A peer is named by its software only, without the comment part of its user agent.
+- The start is a known height and hash, given as an anchor, taken as the highest published checkpoint below the first height, or the fixed point of the chain profile.
+- Only peers that pass the fork probe of the profile count towards the target height. The second highest reported height is the target, so one peer cannot set it alone.
+- Each header must name the hash of the header before it, its hash must not exceed the target from its own nBits, and every fixed point and checkpoint in range must match. The Equihash solution of a Zcash header is not verified.
+- A peer on another branch is dropped, and its headers are fetched again from the next peer.
+- After the fetch, two further peers deliver the last 500 headers again, and the hashes are compared.
+
+The self test runs offline. It checks 20 real headers per network from `headers/fixtures/` for linkage and work, compares the sha256 of the fixture and of the heads CSV made from it with `headers/fixtures/SHA256SUMS`, and shows that each check catches its own fault.
+
 ## PH-M-002 Tip switches and chain split
 
 **Input.** The log of our watch. The watch keeps a tree of all headers announced to it and follows the branch with the most work.

@@ -242,7 +242,7 @@ def read_peers(seeds, peers_file, port):
 
 class Peer:
     def __init__(self, net, addr, timeout=12):
-        self.net = net
+        self.profile = net
         self.magic = bytes.fromhex(net["magic"])
         fam = socket.AF_INET6 if ":" in addr[0] else socket.AF_INET
         self.s = socket.socket(fam, socket.SOCK_STREAM)
@@ -281,7 +281,7 @@ class Peer:
 
     def handshake(self):
         empty = struct.pack("<Q", 0) + b"\0" * 10 + b"\xff\xff" + b"\0" * 4 + struct.pack(">H", 0)
-        payload = (struct.pack("<iQq", self.net["protocol"], 0, int(time.time())) + empty + empty
+        payload = (struct.pack("<iQq", self.profile["protocol"], 0, int(time.time())) + empty + empty
                    + struct.pack("<Q", random.getrandbits(64)) + varint(len(USER_AGENT)) + USER_AGENT
                    + struct.pack("<i", 0) + b"\0")
         self.send("version", payload)
@@ -308,14 +308,14 @@ class Peer:
         message (a new block announcement) does not hang on the locator and is
         skipped."""
         known = set(locator)
-        self.send("getheaders", struct.pack("<I", self.net["protocol"]) + varint(len(locator))
+        self.send("getheaders", struct.pack("<I", self.profile["protocol"]) + varint(len(locator))
                   + b"".join(locator) + b"\0" * 32)
         until = time.time() + wait
         while time.time() < until:
             cmd, p = self.receive()
             if cmd != "headers":
                 continue
-            out = split_headers(self.net["family"], p)
+            out = split_headers(self.profile["family"], p)
             if out and out[0][4:36] not in known:
                 continue
             return out
@@ -558,7 +558,8 @@ def selftest():
     # Locator: ten single hashes, then doubling steps, start last.
     fake = [(i, {"hash": bytes([i % 256]) * 32}) for i in range(100)]
     loc = locator(fake, b"\0" * 32)
-    ok(loc[0] == fake[-1][1]["hash"] and loc[-1] == b"\0" * 32 and len(loc) == 17, "locator shape")
+    want = [99, 98, 97, 96, 95, 94, 93, 92, 91, 90, 88, 84, 76, 60, 28]
+    ok(loc[:-1] == [fake[i][1]["hash"] for i in want] and loc[-1] == b"\0" * 32, "locator shape")
 
     sums = {}
     with open(os.path.join(here, "fixtures", "SHA256SUMS")) as f:
@@ -679,7 +680,7 @@ def main():
                             "block contents", "consensus rules beyond the header"],
             "csv_sha256": hashlib.sha256(data).hexdigest()}
     meta.update(info)
-    meta["peer_software"] = [software(x) for x in info["peer_software"]]
+    meta["peer_software"] = sorted({software(x) for x in info["peer_software"]})
     for c in meta["cross_checks"] + meta["cross_checks_without_answer"]:
         c["software"] = software(c["software"])
     write_bytes(a.meta, (json.dumps(meta, indent=2) + "\n").encode())
