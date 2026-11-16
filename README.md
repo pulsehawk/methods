@@ -41,6 +41,10 @@ We do not claim any accreditation. We work along the same lines as a test labora
 
 Every number in a report carries its kind. counted is counted by us from our own data, source is taken from a named outside source, computed comes from a model, a forecast or a difference to a forecast.
 
+## History
+
+The scripts were written in our working repository and published here together by 9 Nov 2026. The data behind our public results was collected from 15 Oct to 9 Nov 2026.
+
 ## License
 
 MIT, see `LICENSE`.
