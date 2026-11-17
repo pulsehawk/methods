@@ -31,7 +31,7 @@ Written by `headers/ph_headers.py` next to the heads CSV.
 | `checkpoints_checked` | number of published checkpoints inside the range that matched |
 | `target_height`, `target_from_peers`, `probes_refused` | the target height, from how many peers on this chain, and how many probes were on another chain |
 | `forks_dropped` | branches we dropped, with fork height and length |
-| `cross_checks` | per further peer `software`, `compared`, `equal`, `peer_tip` |
+| `cross_checks` | per further peer `software`, `compared`, `equal`, `peer_height_checked` (the highest height in the headers this peer sent for the cross check, not the tip of its chain) |
 | `cross_checks_without_answer` | further peers that did not answer |
 | `peer_software` | software of every peer used, without version comment |
 | `csv_sha256` | sha256 of the heads CSV |

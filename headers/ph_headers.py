@@ -507,7 +507,7 @@ def fetch(net, addrs, start, stop_height, checkpoints, cross_checks, max_errors=
                 equal = sum(1 for i, r in enumerate(raws) if by_h.get(from_h + i) == sha256d(r))
                 overlap = sum(1 for i in range(len(raws)) if from_h + i in by_h)
                 probes.append({"software": p2.agent, "compared": overlap, "equal": equal,
-                               "peer_tip": from_h + len(raws) - 1})
+                               "peer_height_checked": from_h + len(raws) - 1})
                 log(f"cross check {software(p2.agent)}: {equal} of {overlap} equal")
             except (OSError, ConnectionError, TimeoutError, CheckError) as e:
                 no_answer.append({"software": p2.agent, "error": type(e).__name__})
