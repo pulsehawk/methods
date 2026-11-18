@@ -82,9 +82,10 @@ Before you open a pull request, and again before you mark it ready for review, r
 ```
 python3 upgrade_report/report_v1.py --selftest
 python3 tools/heads_from_rpc.py --selftest
+python3 headers/ph_headers.py --selftest
 ```
 
-Both must end with `all tests passed`, and the data check above must print nothing. Every new script has its own `--selftest` that runs without network access and checks the rules it implements. If your change alters any output of the examples, the expected sha256 in `examples/*/expected/` change in the same commit, and the pull request says why.
+All three must end with `all tests passed`, and the data check above must print nothing. Every new script has its own `--selftest` that runs without network access and checks the rules it implements. If your change alters any output of the examples, the expected sha256 in `examples/*/expected/` change in the same commit, and the pull request says why.
 
 ## Git Usage
 

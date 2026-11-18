@@ -4,7 +4,7 @@ Block intervals around the Zcash NU7 activation, counted from our own header cha
 
 | File | Content |
 |---|---|
-| `zcash-nu7-testnet-intervals-2026-10-18.csv` | testnet, heights 4,465,026 to 4,514,228, header times 4 Oct 2026 18:21:45 utc to 18 Oct 2026 05:59:48 utc, 49,202 intervals. The same file is published on pulsehawk.io. |
+| `zcash-nu7-testnet-intervals-2026-10-18.csv` | testnet, heights 4,465,026 to 4,514,228, header times 4 Oct 2026 18:21:45 utc to 18 Oct 2026 05:59:48 utc, 49,202 intervals. The same file is published on our site. |
 | `zcash-mainnet-nu7-intervals-2026-11-06.csv` | mainnet, heights 3,543,405 to 3,543,655, header times 6 Nov 2026 02:34:02 utc to 05:13:14 utc, the first 250 intervals after activation. Our heads were cross checked against two Zebra 7.0.0 peers, 500 of 500 hashes equal. |
 | `SHA256SUMS` | sha256 of both CSV files |
 
