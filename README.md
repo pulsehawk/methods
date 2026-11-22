@@ -33,6 +33,8 @@ The block intervals around the Zcash NU7 activation are in `data/zcash-nu7/`, th
 | `ROUND_ROBIN.md` | how a third party counts one metric with their own data |
 | `headers/ph_headers.py` | header client for Zcash and Bitcoin Cash over the peer to peer protocol, PH-M-001 |
 | `tools/heads_from_rpc.py` | heads CSV from your own node, for the round robin |
+| `tools/bchn_chainparams.py` | checkpoints and seed names of one network from BCHN `src/chainparams.cpp` |
+| `tools/conf_wait.py` | counted waiting time for k confirmations from a heads CSV, beside the computed value |
 | `examples/` | small example inputs with the expected sha256 |
 | `data/zcash-nu7/` | block intervals around the Zcash NU7 activation, testnet and mainnet, with sha256 |
 

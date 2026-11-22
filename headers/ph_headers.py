@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """ph_headers.py - block headers straight from the peer to peer network (PH-M-001).
 
-One header client for two networks, Zcash and Bitcoin Cash. The networks differ
+One header client for two chain families, Zcash and Bitcoin Cash. The networks differ
 only in their parameters (message start, port, protocol version), in the
 layout of the header (Zcash carries an Equihash solution after the nonce) and
 in their fixed points. Everything else is shared.
@@ -72,6 +72,15 @@ NETWORKS = {
         "family": "zcash", "magic": "fa1af9bf", "port": 18233, "protocol": 170180,
         "fixed": {}, "not_at": {},
         "note": "protocol as reported by Zebra 7.0.0-rc.0 on testnet, 15 Oct 2026",
+    },
+    "bch-mainnet": {
+        "family": "bch", "magic": "e3e1f3e8", "port": 8333, "protocol": 70016,
+        "fixed": {478559: "000000000000000000651ef99cb9fcbe0dadde1d424bd9f15ff20136191a5eec"},
+        "not_at": {},
+        "probe_follows_start": True,
+        "note": "BCHN chainparams (CMainParams), fixed point is the UAHF fork block 478,559. "
+                "Bitcoin uses another message start. BSV shares message start and port, so a peer "
+                "counts only if its first header follows our start block (probe_follows_start)",
     },
     "bch-tempnet": {
         "family": "bch", "magic": "e2b7daaf", "port": 48333, "protocol": 70016,
@@ -368,13 +377,21 @@ def locator(chain, start_hash):
 
 def probe_ok(net, p, start):
     """Fork probe: a peer counts only if the header after start matches the
-    fixed point (or is not the excluded one) of the profile."""
+    fixed point (or is not the excluded one) of the profile. With
+    probe_follows_start the first header it sends must also have the start
+    block as its parent, so a peer that does not know the start block (another
+    chain with the same message start) does not count."""
     h_next = start[0] + 1
-    if h_next not in net["fixed"] and h_next not in net["not_at"]:
+    follow = net.get("probe_follows_start", False)
+    if h_next not in net["fixed"] and h_next not in net["not_at"] and not follow:
         return True
     got = p.headers([start[1]], wait=20)
     if not got:
         return False
+    if follow and got[0][4:36] != start[1]:
+        return False
+    if h_next not in net["fixed"] and h_next not in net["not_at"]:
+        return True
     hx = hexhash(sha256d(got[0]))
     if h_next in net["fixed"]:
         return hx == net["fixed"][h_next]
@@ -604,6 +621,14 @@ def selftest():
             ok("checkpoint" in str(e), f"{name} checkpoint fault caught")
         msg = varint(len(raws)) + b"".join(r + b"\0" for r in raws)
         ok(split_headers(family, msg) == raws, f"{name} headers message split")
+        if family == "bch":
+            class Answer:
+                def headers(self, loc, wait=60):
+                    return raws
+            net_follow = NETWORKS["bch-mainnet"]
+            ok(probe_ok(net_follow, Answer(), start), f"{name} probe passes a peer that follows the start")
+            other = (start[0], b"\x01" * 32)
+            ok(not probe_ok(net_follow, Answer(), other), f"{name} probe refuses a peer that does not know the start")
         if fx["network"] == "bch-tempnet":
             try:
                 check_chain(family, start, raws, NETWORKS["bch-chipnet"]["fixed"], NETWORKS["bch-chipnet"]["not_at"])
