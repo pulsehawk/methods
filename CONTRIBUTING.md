@@ -69,8 +69,8 @@ Check your data before you open a pull request. This command must print nothing.
 
 ```
 P='([0-9]{1,3}\.){3}[0-9]{1,3}|([0-9a-fA-F]{1,4}:){3,7}[0-9a-fA-F]{1,4}|[a-z0-9-]+\.(com|net|org|io|de|xyz|app|dev|onion|i2p)\b|\b(t1|t3|tm|zs1|u1|utest1|ztestsapling1)[a-zA-Z0-9]{20,}'
-git grep -nIE "$P" -- examples data
-for f in $(git ls-files 'examples/*.gz' 'data/*.gz'); do zcat "$f" | grep -nE "$P" | sed "s#^#$f:#"; done
+git grep -nIE "$P" -- examples data bch_tempnet/examples
+for f in $(git ls-files 'examples/*.gz' 'data/*.gz' 'bch_tempnet/examples/*.gz' 'bch_tempnet/examples/**/*.gz'); do zcat "$f" | grep -nE "$P" | sed "s#^#$f:#"; done
 ```
 
 The command is a coarse filter, not a proof. You remain responsible for what you add. If you find an address in the repository, report the file and the line in an issue, never the value.
@@ -83,9 +83,11 @@ Before you open a pull request, and again before you mark it ready for review, r
 python3 upgrade_report/report_v1.py --selftest
 python3 tools/heads_from_rpc.py --selftest
 python3 headers/ph_headers.py --selftest
+for f in bch_tempnet/weekly.py bch_tempnet/windows.py bch_tempnet/chunks.py bch_tempnet/build_switch.py; do python3 $f --selftest; done
+python3 bch_tempnet/example.py
 ```
 
-All three must end with `all tests passed`, and the data check above must print nothing. Every new script has its own `--selftest` that runs without network access and checks the rules it implements. If your change alters any output of the examples, the expected sha256 in `examples/*/expected/` change in the same commit, and the pull request says why.
+All must end with `all tests passed`, and the data check above must print nothing. Every new script has its own `--selftest` that runs without network access and checks the rules it implements. If your change alters any output of the examples, the expected sha256 in `examples/*/expected/` or `bch_tempnet/examples/SHA256SUMS` change in the same commit, and the pull request says why.
 
 ## Git Usage
 

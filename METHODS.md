@@ -58,7 +58,7 @@ The self test runs offline. It checks 20 real headers per network from `headers/
 
 **Procedure.** A block counts as stale when it was announced to us and is not in our chain 6 blocks later. The share is stale blocks over chain blocks plus stale blocks.
 
-**Used for.** not in the upgrade report v1. The implementation follows in this repository.
+**Used for.** not in the upgrade report v1. The stale counts per window and chunk in PH-M-008 use it. The listener itself follows in this repository.
 
 ## PH-M-006 Forecast of the activation time
 
@@ -67,6 +67,34 @@ The self test runs offline. It checks 20 real headers per network from `headers/
 **Procedure.** The remaining blocks up to the activation height are drawn many times with replacement from the counted intervals of a recent window, and the drawn intervals are added up. The median of the sums is the forecast, the 5 % and 95 % points form the 90 % band. The window and the number of draws are stated with each forecast.
 
 **Used for.** the forecast rows of M7 (keys `estimate` and `header_time_minus_estimate` in format v1), which are computed, not counted. The implementation follows in this repository.
+
+## PH-M-007 Weekly count of the Bitcoin Cash tempnet
+
+**Input.** Our heads CSV of the tempnet 2027 (one minute blocks) from its first block 327,989, fetched with PH-M-001, and the heads meta of the fetch.
+
+**Procedure.** The range runs from 327,989 to the highest block whose header time is at or before the cutoff. Intervals follow PH-M-001 and are compared with exponential intervals at 60 s. The MTP lag of a block is its header time minus the median of the header times of the 11 blocks before it, and the expectation comes from a simulation with a fixed seed and 200,000 draws. Ten consecutive intervals are compared with ten times 60 s (Erlang) and with one block at 600 s. Difficulty is target(0x1d00ffff) over target(nBits). The tracking of the difficulty uses windows of 100 blocks: a jump of the hash rate from factor 2, confirmed by the next window, is caught up when the last difficulty of a block not at powLimit lies within 15 % of the hash rate of the next 100 blocks times 60 s. Blocks at minimum difficulty (nBits = powLimit) are counted per day and by the gap before them. This is an observation from the headers, the rule itself is not checked.
+
+**Used for.** our weekly tempnet reports, 21 Oct to 15 Nov 2026.
+
+**Time base.** Header times, and the fetch time from the heads meta for the age of the tip.
+
+**Implementation.** `bch_tempnet/weekly.py`.
+
+## PH-M-008 Hash windows and chunks of 120 blocks
+
+**Input.** Our heads CSV of the tempnet and, for stale blocks, the records of our listener (stale after 6 confirmations, PH-M-005), see `FORMATS.md`.
+
+**Procedure.** A block belongs to a hash window when the work over the last 10 blocks (sum of their difficulty over the time since the header before them) reaches 5 difficulty per second, or when the 10 blocks came within 60 s. Runs less than 30 min apart are merged, and the edges move to the first and last block whose own interval alone reaches the threshold. Stale blocks belong to a window by height, the share is stale over announced chain blocks plus stale.
+
+Chunks are 120 consecutive heights from the first row of the heads CSV, the last incomplete chunk is dropped. Per chunk we give the mean difficulty, the mean and median block time (header time minus header time of the parent), stale blocks and stale events (a height with one or more stale blocks counts once), and the listener coverage. Below 99.9 % coverage the stale values stay empty. Two further counts follow rules proposed by a reader of our forum posts. Without difficulty 1, a whole stale branch is left out when the chain block or a stale block at its fork point has difficulty 1. The slot count assigns every stale fork to its slot (the first block after the chain), deduplicates blocks by hash, and without difficulty 1 drops a fork whose chain block or own block at the slot has difficulty 1 and cuts a fork before its first block at difficulty 1. In the slot count the block time is the gap between consecutive counted blocks inside the chunk.
+
+**Used for.** the hash windows and the chunk tables in our tempnet posts, 10 to 18 Nov 2026.
+
+**Time base.** Header times for windows and chunks, arrival at our listener for the coverage and for lists of hours.
+
+**Implementation.** `bch_tempnet/windows.py` and `bch_tempnet/chunks.py`. `bch_tempnet/build_switch.py` splits the listener data at the time a public node changed its build and evaluates PH-M-004 and PH-M-005 before and after.
+
+The self tests run offline. `bch_tempnet/example.py` runs `weekly.py`, `windows.py` and `chunks.py` on a short excerpt of our own tempnet data in `bch_tempnet/examples/` and compares the sha256 of all inputs and outputs with `bch_tempnet/examples/SHA256SUMS`.
 
 ## M6 in specification v1.0
 

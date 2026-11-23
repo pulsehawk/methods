@@ -28,13 +28,14 @@ The block intervals around the Zcash NU7 activation are in `data/zcash-nu7/`, th
 |---|---|
 | `upgrade_report/report_v1.py` | raw values M1 to M7 of the upgrade report, specification v1.0 |
 | `upgrade_report/configs/` | one config per chain and upgrade |
-| `METHODS.md` | the named methods PH-M-001 to PH-M-006, uncertainty and traceability |
+| `METHODS.md` | the named methods PH-M-001 to PH-M-008, uncertainty and traceability |
 | `FORMATS.md` | the input and output formats |
 | `ROUND_ROBIN.md` | how a third party counts one metric with their own data |
 | `headers/ph_headers.py` | header client for Zcash and Bitcoin Cash over the peer to peer protocol, PH-M-001 |
 | `tools/heads_from_rpc.py` | heads CSV from your own node, for the round robin |
 | `tools/bchn_chainparams.py` | checkpoints and seed names of one network from BCHN `src/chainparams.cpp` |
 | `tools/conf_wait.py` | counted waiting time for k confirmations from a heads CSV, beside the computed value |
+| `bch_tempnet/` | weekly count, hash windows, chunks of 120 blocks and build switch of the Bitcoin Cash tempnet 2027, PH-M-007 and PH-M-008, with an example and its sha256 |
 | `examples/` | small example inputs with the expected sha256 |
 | `data/zcash-nu7/` | block intervals around the Zcash NU7 activation, testnet and mainnet, with sha256 |
 

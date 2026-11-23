@@ -104,6 +104,39 @@ Only data from the measurement window. The gzip files carry no timestamp in thei
 
 No file contains an address, a host name or anything that identifies a peer beyond its software.
 
+## Listener records read by `bch_tempnet/`
+
+A listener folder holds one folder per run (`YYYYMMDDTHHMM`) and two files of the last evaluation over all runs. The full description of the listener follows with the listener itself; here are the fields the tempnet tools read.
+
+| File | Field | Meaning |
+|---|---|---|
+| `<run>/meta.json` | `start_utc`, `ende_utc` | start and end (`ende`) of the run, used for the coverage |
+| | `peers` | per connection `peer` (`peer_1`, `peer_2` and so on, numbered again per run), `software` (user agent), `version` (protocol), `verbunden_utc` (connected), `getrennt_utc` (disconnected, missing if the connection lasted to the end); `build_switch.py` only |
+| `<run>/koepfe.jsonl.gz` | `hash`, `prev`, `nbits` | one line per header the run fetched, also for stale blocks; `chunks.py` only |
+| `<run>/ereignisse.jsonl.gz` | `hash`, `peer`, `t_ms` | one line per announcement (`Ereignis`, event), arrival in unix milliseconds; `build_switch.py` only |
+| `bloecke.csv` | `height`, `hash`, `first_seen_utc`, `interval_s`, `timestamp_deviation_s`, `propagation_spread_ms`, `peers_announced` | one row per chain block (`Bloecke`, blocks); `first_seen_utc` is empty when no run saw the block |
+| `zusammenfassung.json` | `stale.bloecke` | the summary (`Zusammenfassung`); per stale block `height`, `hash`, `first_seen_utc`, `peers_announced` |
+
+## Tempnet chunk CSV (`chunks.csv`, `chunks-no-diff1.csv`)
+
+Written by `bch_tempnet/chunks.py`, one row per chunk of 120 heights.
+
+| Column | Meaning |
+|---|---|
+| `chunk_n` | number of the chunk, from 1 at the first row of the heads CSV |
+| `first_height`, `last_height`, `start_utc` | heights of the chunk and header time of its first block |
+| `mean_difficulty` | mean difficulty of the counted blocks |
+| `mean_block_time_s`, `median_block_time_s` | header time minus header time of the parent, per counted block |
+| `stale_blocks`, `stale_events` | stale blocks by height, and heights with one or more stale blocks; empty without full coverage |
+| `listener_coverage_pct`, `full_coverage` | share of the time of the chunk a listener run covered, and `yes` from 99.9 % |
+| `block_count` | `chunks-no-diff1.csv` only: blocks not at difficulty 1 |
+
+The slot CSVs (`--slot-csv`, `--slot-nomin-csv`) have the columns `chunk_n`, `first_height`, `last_height`, `start_utc`, `mean_difficulty`, `mean_block_time_s`, `median_block_time_s` (here the gap between consecutive counted blocks inside the chunk), `block_count`, `stale_events` (slots with a fork), `stale_forks`, `stale_blocks` (deduplicated by hash), `stale_max_fork_depth`, `listener_coverage_pct` and `full_coverage`.
+
+## Tempnet example (`bch_tempnet/examples/`)
+
+`SHA256SUMS` lists the sha256 of every input (`input/<path>`) and of every output that `bch_tempnet/example.py` writes (`output/<name>`).
+
 ## Report CSV (`report-v1-<chain>-<upgrade>.csv`)
 
 | Column | Meaning |
