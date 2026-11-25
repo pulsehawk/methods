@@ -1,0 +1,14 @@
+{
+  "method": "PH-M-001",
+  "network": "bch-tempnet",
+  "fetched_utc": "2026-10-17T09:43:12Z",
+  "start_height": 327988,
+  "first_height": 327989,
+  "tip_height": 329428,
+  "tip_hash": "00000000ac6aa753e9d9cbb602e9d6c1c71e1ec3fc957bf9d3ea248c85b36e5a",
+  "cross_checks": [],
+  "peer_software": [
+    "Bitcoin Cash Node"
+  ],
+  "note": "example: the first 1,440 tempnet headers from our fetch, cut for the self test"
+}
