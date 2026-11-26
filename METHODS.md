@@ -52,13 +52,24 @@ The self test runs offline. It checks 20 real headers per network from `headers/
 
 **Time base.** Arrival at our listener, from the host clock.
 
+**Implementation.** `listener/listen.py`, one listener for Zcash and Bitcoin Cash with the network profiles, the message layer and the header layout of `headers/ph_headers.py`.
+
+- Peers are given on the command line as DNS seed names or as a file, as for the header client. The listener prints and saves no address and no host name. A connection is named by a label per run and by its user agent, cut before the first "(" and with anything like an address or a host name replaced.
+- Zcash: up to 8 connections per node software (Zebra, Zakura), other software is not kept. For every new block hash the first announcer is asked for the block, and only its header is kept, so stale blocks get a parent, a time and nBits.
+- Bitcoin Cash: a connection counts only after a fork probe at height 327,988 (the tempnet block must follow on the tempnet, it must not on the chipnet). Every connection is asked for compact blocks in high bandwidth mode, every second one also for header announcements, so all three message types occur. For every new block the first announcer is asked for a cmpctblock unless one came on its own within 3 s, and its short ids are counted against the transaction ids announced to us. That is an estimate, the listener has no mempool.
+- `listener/evaluate_bch.py` and `listener/evaluate_zcash.py` give first seen, the spread over the connections, the arrival minus the header time, the compact block path (Bitcoin Cash), the arrival of Zakura minus Zebra (Zcash) and the stale blocks of PH-M-005. `listener/propagation.py` compares first seen at two listeners at different places, per block both saw; the difference contains the path to each listener and both host clocks.
+
+The self tests run offline. `listen.py` checks SipHash-2-4 against its reference values, the cutting of user agents, and replays messages built from the real headers in `headers/fixtures/` through the message handling of both families; the sha256 of the replay output is in `listener/examples/SHA256SUMS`. `listener/example.py` runs the evaluations on a short excerpt of our own recordings in `listener/examples/` and compares the sha256 of all inputs and outputs.
+
 ## PH-M-005 Stale blocks after 6 confirmations
 
 **Input.** As PH-M-004, plus our header chain.
 
 **Procedure.** A block counts as stale when it was announced to us and is not in our chain 6 blocks later. The share is stale blocks over chain blocks plus stale blocks.
 
-**Used for.** not in the upgrade report v1. The stale counts per window and chunk in PH-M-008 use it. The listener itself follows in this repository.
+**Used for.** not in the upgrade report v1. The stale counts per window and chunk in PH-M-008 use it.
+
+**Implementation.** `listener/evaluate_bch.py` as defined above, with `--confirmations` (default 6). A block within that many blocks of the tip stays open, a block whose header the listener never got has no height and is counted apart. `listener/evaluate_zcash.py` counts every announced block that is not in the chain fetched after the runs, gives it a height from its parent and groups the stale blocks into branches with their depth; the chain must therefore be fetched after the end of the runs, otherwise later chain blocks count as one long stale branch.
 
 ## PH-M-006 Forecast of the activation time
 

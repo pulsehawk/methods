@@ -106,7 +106,7 @@ No file contains an address, a host name or anything that identifies a peer beyo
 
 ## Listener records read by `bch_tempnet/`
 
-A listener folder holds one folder per run (`YYYYMMDDTHHMM`) and two files of the last evaluation over all runs. The full description of the listener follows with the listener itself; here are the fields the tempnet tools read.
+A listener folder holds one folder per run (`YYYYMMDDTHHMM`) and two files of the last evaluation over all runs. The full description of the listener files is in the next section; here are the fields the tempnet tools read.
 
 | File | Field | Meaning |
 |---|---|---|
@@ -116,6 +116,37 @@ A listener folder holds one folder per run (`YYYYMMDDTHHMM`) and two files of th
 | `<run>/ereignisse.jsonl.gz` | `hash`, `peer`, `t_ms` | one line per announcement (`Ereignis`, event), arrival in unix milliseconds; `build_switch.py` only |
 | `bloecke.csv` | `height`, `hash`, `first_seen_utc`, `interval_s`, `timestamp_deviation_s`, `propagation_spread_ms`, `peers_announced` | one row per chain block (`Bloecke`, blocks); `first_seen_utc` is empty when no run saw the block |
 | `zusammenfassung.json` | `stale.bloecke` | the summary (`Zusammenfassung`); per stale block `height`, `hash`, `first_seen_utc`, `peers_announced` |
+
+## Listener output (`listener/listen.py`)
+
+One folder per run. The field names are those of our recorded series since October 2026, partly German, so that old and new recordings read the same; the German word is given in brackets. Times are UTC, `t_ms` is unix milliseconds from the clock of the host.
+
+| File | Field | Meaning |
+|---|---|---|
+| `ereignisse.jsonl` (events) | `t_ms`, `peer`, `art`, `hash` | one line per block announcement: time of arrival, connection label, message type (`art`, kind: `inv`, `headers`, or for Bitcoin Cash `cmpctblock`), block hash |
+| `koepfe.jsonl` (headers) | `hash`, `prev`, `zeit`, `nbits`, `von`, `quelle` | one line per block header the run got, once per hash, also for blocks that end up stale: hash, parent hash, header time (`zeit`), nBits, the connection it came from (`von`) and how (`quelle`, source: `headers`, `block`, `cmpctblock`) |
+| `compact.jsonl` (Bitcoin Cash only) | `t_ms`, `peer`, `hash`, `von_selbst`, `kurz_ids`, `vorbefuellt`, `fehlend_geschaetzt`, `tx_ids_bekannt` | one line per cmpctblock: whether it came unasked (`von_selbst`), the number of short ids (`kurz_ids`), prefilled transactions (`vorbefuellt`), short ids that match no transaction announced to us (`fehlend_geschaetzt`, estimated missing) and how many transaction ids we held (`tx_ids_bekannt`) |
+| `meta.json` | `netz`, `protokoll`, `start_utc`, `ende_utc`, `geplantes_ende_utc`, `dauer_min` | network profile, protocol version we announced, actual start and end, planned end, planned minutes |
+| | `peers` | per connection `peer` label (`zebra-1`, `zakura-1` for Zcash, `peer_1` for Bitcoin Cash, numbered again per run), `software` (user agent cut before the first "(", anything like an address or a host name replaced by `[removed]`), `version`, `gemeldete_hoehe` (reported height), `verbunden_utc`, `getrennt_utc`, `ende_grund` (why the connection ended), `ankuendigungen` (announcements), for Bitcoin Cash `erbeten` (what we asked for) and `ganze_bloecke` (whole blocks instead of a cmpctblock) |
+| | `block_hashes_gesehen`, `koepfe_geholt` | block hashes seen, headers got |
+| | `ziel_verbindungen_je_software` | Zcash: connections kept per node software |
+| | `peers_ohne_abzweig_abgelehnt` | Bitcoin Cash: peers refused by the fork probe |
+
+Our recorded Zcash series name the files of a run `sNN-ereignisse.jsonl.gz`, `sNN-koepfe.jsonl.gz` and `sNN-meta.json` in one folder; `evaluate_zcash.py` reads them with `--events`, `--heads-seen` and `--meta`.
+
+## Listener evaluations (`listener/evaluate_bch.py`, `listener/evaluate_zcash.py`, `listener/propagation.py`)
+
+`evaluate_bch.py --csv` writes one row per chain block whose header time lies in a run or that a run saw: `height`, `hash`, `header_time_utc`, `interval_s`, `first_seen_utc` and `first_seen_type` (first announcement over all connections), `first_inv_utc`, `first_headers_utc`, `first_cmpctblock_utc`, `timestamp_deviation_s` (first seen minus header time), `propagation_spread_ms` (last minus first announcement over the connections, from two connections), `peers_announced`, `cmpctblock` (`yes` or `no`), `cmpctblock_unsolicited_peers`, `short_ids`, `prefilled`, `missing_tx_estimate` (of the first cmpctblock). Empty means not seen or not given.
+
+`evaluate_bch.py --out` writes the summary: the runs, the hours covered, the user agents, the chain tip, `chain_blocks`, `announced_seen`, `first_seen_type` per message type, `timestamp_deviation_s`, `propagation_spread_ms` and `peers_per_block` as `n`, `mean`, `median`, `p90`, `p99`, `min`, `max` (nearest rank), the compact block path and `stale` with `count`, `confirmations`, `share_pct`, `open_below_confirmations`, `without_header` and one entry per stale block (`height`, `hash`, `header_time_utc`, `first_seen_utc`, `first_seen_type`, `peers_announced`, `canonical_hash_at_height`).
+
+`evaluate_zcash.py --out` writes the window, first and last announcement and the minutes covered, connections and announcements per software, `chain_blocks_in_window`, `announced_seen`, `stale_count`, `stale_without_header`, with `--activation` the `phases` before and from the activation and from it per 6 h (`chain_blocks_in_window`, `announced_seen`, `stale`, `stale_share_pct`), the branches with `max_depth` and `depths`, up to 20 `stale_examples`, `zakura_minus_zebra_ms`, `spread_all_connections_ms` and `first_arrival_minus_header_time_s` (interpolated quantiles), and the meta of the runs.
+
+`propagation.py` writes `n` (blocks both listeners saw), `a_blocks`, `median_s`, `p10_s`, `p90_s`, `min_s`, `max_s` of first seen at A minus first seen at B, and `a_first`, `b_first`.
+
+## Listener example (`listener/examples/`)
+
+Two chipnet runs (`bch-chipnet/`), two Zcash mainnet runs (`zcash-mainnet/`) and the tempnet runs of two places for one evening (`bch-tempnet/a`, `bch-tempnet/b`), each with our heads for the span, cut to the fields the tools read. `SHA256SUMS` lists every input and every output of `listener/example.py`, including the replay of `listen.py`'s self test.
 
 ## Tempnet chunk CSV (`chunks.csv`, `chunks-no-diff1.csv`)
 
