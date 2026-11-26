@@ -36,6 +36,7 @@ The block intervals around the Zcash NU7 activation are in `data/zcash-nu7/`, th
 | `tools/bchn_chainparams.py` | checkpoints and seed names of one network from BCHN `src/chainparams.cpp` |
 | `tools/conf_wait.py` | counted waiting time for k confirmations from a heads CSV, beside the computed value |
 | `bch_tempnet/` | weekly count, hash windows, chunks of 120 blocks and build switch of the Bitcoin Cash tempnet 2027, PH-M-007 and PH-M-008, with an example and its sha256 |
+| `listener/` | listener for Zcash and Bitcoin Cash over the peer to peer protocol and its evaluations (first seen, propagation spread, compact block path, stale blocks, two vantage points), PH-M-004 and PH-M-005, with an example and its sha256 |
 | `examples/` | small example inputs with the expected sha256 |
 | `data/zcash-nu7/` | block intervals around the Zcash NU7 activation, testnet and mainnet, with sha256 |
 

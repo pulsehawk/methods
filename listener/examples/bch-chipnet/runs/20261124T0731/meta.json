@@ -1,0 +1,703 @@
+{
+ "start_utc": "2026-11-24T07:31:23Z",
+ "ende_utc": "2026-11-24T13:01:23Z",
+ "geplantes_ende_utc": "2026-11-24T13:01:23Z",
+ "dauer_min": 330.0,
+ "protokoll": 70016,
+ "peers_ohne_abzweig_abgelehnt": 41,
+ "peers": [
+  {
+   "peer": "peer_1",
+   "software": "/Bitcoin Cash Node:29.2.1/",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T07:31:34Z",
+   "ankuendigungen": 117
+  },
+  {
+   "peer": "peer_2",
+   "software": "/Bitcoin Cash Node:29.2.1/",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T07:31:34Z",
+   "ankuendigungen": 117
+  },
+  {
+   "peer": "peer_3",
+   "software": "/Bitcoin Cash Node:29.2.1",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T07:31:35Z",
+   "ankuendigungen": 117
+  },
+  {
+   "peer": "peer_4",
+   "software": "/Vcash:0.1/",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T07:31:35Z",
+   "ankuendigungen": 117
+  },
+  {
+   "peer": "peer_5",
+   "software": "/Bitcoin Cash Node:29.2.1/",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T07:31:36Z",
+   "ankuendigungen": 117
+  },
+  {
+   "peer": "peer_6",
+   "software": "/Bitcoin Cash Node:29.2.1/",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T07:31:36Z",
+   "ankuendigungen": 117
+  },
+  {
+   "peer": "peer_7",
+   "software": "/Bitcoin Cash Node:29.2.1/",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T07:31:39Z",
+   "ankuendigungen": 117
+  },
+  {
+   "peer": "peer_8",
+   "software": "/Bitcoin Cash Node:29.2.1",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T07:31:40Z",
+   "ankuendigungen": 117
+  },
+  {
+   "peer": "peer_9",
+   "software": "/Rapids:2026-11.4df41e42/",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T07:31:42Z",
+   "ankuendigungen": 118
+  },
+  {
+   "peer": "peer_10",
+   "software": "/Bitcoin Cash Node:29.2.1/",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T08:01:52Z",
+   "ankuendigungen": 107
+  },
+  {
+   "peer": "peer_11",
+   "software": "/Bitcoin Cash Node:29.2.1/",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T08:01:53Z",
+   "ankuendigungen": 107
+  },
+  {
+   "peer": "peer_12",
+   "software": "/Bitcoin Cash Node:29.2.1",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T08:01:54Z",
+   "ankuendigungen": 107
+  },
+  {
+   "peer": "peer_13",
+   "software": "/Vcash:0.1/",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T08:01:55Z",
+   "ankuendigungen": 107
+  },
+  {
+   "peer": "peer_14",
+   "software": "/Bitcoin Cash Node:29.2.1/",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T08:01:55Z",
+   "ankuendigungen": 107
+  },
+  {
+   "peer": "peer_15",
+   "software": "/Bitcoin Cash Node:29.2.1/",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T08:01:56Z",
+   "ankuendigungen": 107
+  },
+  {
+   "peer": "peer_16",
+   "software": "/Vcash:0.1/",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T08:01:56Z",
+   "ankuendigungen": 107
+  },
+  {
+   "peer": "peer_17",
+   "software": "/Bitcoin Cash Node:29.2.1/",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T08:01:56Z",
+   "ankuendigungen": 107
+  },
+  {
+   "peer": "peer_18",
+   "software": "/Bitcoin Cash Node:29.2.1/",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T08:32:11Z",
+   "ankuendigungen": 97
+  },
+  {
+   "peer": "peer_19",
+   "software": "/Rapids:2026-11.4df41e42/",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T08:32:12Z",
+   "ankuendigungen": 97
+  },
+  {
+   "peer": "peer_20",
+   "software": "/Bitcoin Cash Node:29.2.1/",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T08:32:12Z",
+   "ankuendigungen": 96
+  },
+  {
+   "peer": "peer_21",
+   "software": "/Bitcoin Cash Node:29.2.1/",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T08:32:14Z",
+   "ankuendigungen": 96
+  },
+  {
+   "peer": "peer_22",
+   "software": "/Bitcoin Cash Node:29.2.1/",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T08:32:16Z",
+   "ankuendigungen": 96
+  },
+  {
+   "peer": "peer_23",
+   "software": "/Bitcoin Cash Node:29.2.1/",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T08:32:18Z",
+   "ankuendigungen": 96
+  },
+  {
+   "peer": "peer_24",
+   "software": "/Bitcoin Cash Node:29.2.1",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T08:32:18Z",
+   "ankuendigungen": 96
+  },
+  {
+   "peer": "peer_25",
+   "software": "/Bitcoin Cash Node:29.2.1/",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T09:02:31Z",
+   "ankuendigungen": 85
+  },
+  {
+   "peer": "peer_26",
+   "software": "/Bitcoin Cash Node:29.2.1/",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T09:02:32Z",
+   "ankuendigungen": 85
+  },
+  {
+   "peer": "peer_27",
+   "software": "/Vcash:0.1/",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T09:02:32Z",
+   "ankuendigungen": 85
+  },
+  {
+   "peer": "peer_28",
+   "software": "/Bitcoin Cash Node:29.2.1/",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T09:02:34Z",
+   "ankuendigungen": 85
+  },
+  {
+   "peer": "peer_29",
+   "software": "/Bitcoin Cash Node:29.2.1/",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T09:02:35Z",
+   "ankuendigungen": 85
+  },
+  {
+   "peer": "peer_30",
+   "software": "/Bitcoin Cash Node:29.2.1/",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T09:02:36Z",
+   "ankuendigungen": 85
+  },
+  {
+   "peer": "peer_31",
+   "software": "/Bitcoin Cash Node:29.2.1/",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T09:02:36Z",
+   "ankuendigungen": 85
+  },
+  {
+   "peer": "peer_32",
+   "software": "/Bitcoin Cash Node:29.2.1/",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T09:02:37Z",
+   "ankuendigungen": 85
+  },
+  {
+   "peer": "peer_33",
+   "software": "/Rapids:2026-11.4df41e42/",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T09:02:38Z",
+   "ankuendigungen": 86
+  },
+  {
+   "peer": "peer_34",
+   "software": "/Bitcoin Cash Node:29.2.1/",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T09:32:51Z",
+   "ankuendigungen": 74
+  },
+  {
+   "peer": "peer_35",
+   "software": "/Bitcoin Cash Node:29.2.1/",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T09:32:51Z",
+   "ankuendigungen": 74
+  },
+  {
+   "peer": "peer_36",
+   "software": "/Bitcoin Cash Node:29.2.1/",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T09:32:52Z",
+   "ankuendigungen": 74
+  },
+  {
+   "peer": "peer_37",
+   "software": "/Bitcoin Cash Node:29.2.1",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T09:32:53Z",
+   "ankuendigungen": 74
+  },
+  {
+   "peer": "peer_38",
+   "software": "/Bitcoin Cash Node:29.2.1/",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T09:32:55Z",
+   "ankuendigungen": 74
+  },
+  {
+   "peer": "peer_39",
+   "software": "/Bitcoin Cash Node:29.2.1/",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T09:32:58Z",
+   "ankuendigungen": 74
+  },
+  {
+   "peer": "peer_40",
+   "software": "/Vcash:0.1/",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T09:32:58Z",
+   "ankuendigungen": 74
+  },
+  {
+   "peer": "peer_41",
+   "software": "/Bitcoin Cash Node:29.2.1/",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T09:32:59Z",
+   "ankuendigungen": 74
+  },
+  {
+   "peer": "peer_42",
+   "software": "/Rapids:2026-11.4df41e42/",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T09:33:00Z",
+   "ankuendigungen": 75
+  },
+  {
+   "peer": "peer_43",
+   "software": "/Vcash:0.1/",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T09:33:01Z",
+   "ankuendigungen": 74
+  },
+  {
+   "peer": "peer_44",
+   "software": "/Bitcoin Cash Node:29.2.1/",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T10:04:01Z",
+   "ankuendigungen": 64
+  },
+  {
+   "peer": "peer_45",
+   "software": "/Bitcoin Cash Node:29.2.1/",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T10:04:02Z",
+   "ankuendigungen": 64
+  },
+  {
+   "peer": "peer_46",
+   "software": "/Bitcoin Cash Node:29.2.1/",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T10:04:03Z",
+   "ankuendigungen": 64
+  },
+  {
+   "peer": "peer_47",
+   "software": "/Vcash:0.1/",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T10:04:03Z",
+   "ankuendigungen": 64
+  },
+  {
+   "peer": "peer_48",
+   "software": "/Bitcoin Cash Node:29.2.1/",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T10:04:04Z",
+   "ankuendigungen": 64
+  },
+  {
+   "peer": "peer_49",
+   "software": "/Bitcoin Cash Node:29.2.1",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T10:04:06Z",
+   "ankuendigungen": 64
+  },
+  {
+   "peer": "peer_50",
+   "software": "/Bitcoin Cash Node:29.2.1/",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T10:04:06Z",
+   "ankuendigungen": 64
+  },
+  {
+   "peer": "peer_51",
+   "software": "/Bitcoin Cash Node:29.2.1/",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T10:04:08Z",
+   "ankuendigungen": 64
+  },
+  {
+   "peer": "peer_52",
+   "software": "/Vcash:0.1/",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T10:04:08Z",
+   "ankuendigungen": 64
+  },
+  {
+   "peer": "peer_53",
+   "software": "/Bitcoin Cash Node:29.2.1/",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T10:04:09Z",
+   "ankuendigungen": 64
+  },
+  {
+   "peer": "peer_54",
+   "software": "/Bitcoin Cash Node:29.2.1/",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T10:04:10Z",
+   "ankuendigungen": 64
+  },
+  {
+   "peer": "peer_55",
+   "software": "/Bitcoin Cash Node:29.2.1/",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T10:35:11Z",
+   "ankuendigungen": 54
+  },
+  {
+   "peer": "peer_56",
+   "software": "/Rapids:2026-11.4df41e42/",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T10:35:15Z",
+   "ankuendigungen": 54
+  },
+  {
+   "peer": "peer_57",
+   "software": "/Bitcoin Cash Node:29.2.1/",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T10:35:15Z",
+   "ankuendigungen": 54
+  },
+  {
+   "peer": "peer_58",
+   "software": "/Bitcoin Cash Node:29.2.1/",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T10:35:16Z",
+   "ankuendigungen": 54
+  },
+  {
+   "peer": "peer_59",
+   "software": "/Bitcoin Cash Node:29.2.1/",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T10:35:16Z",
+   "ankuendigungen": 54
+  },
+  {
+   "peer": "peer_60",
+   "software": "/Bitcoin Cash Node:29.2.1/",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T10:35:16Z",
+   "ankuendigungen": 54
+  },
+  {
+   "peer": "peer_61",
+   "software": "/Bitcoin Cash Node:29.2.1/",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T10:35:18Z",
+   "ankuendigungen": 54
+  },
+  {
+   "peer": "peer_62",
+   "software": "/Bitcoin Cash Node:29.2.1",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T10:35:18Z",
+   "ankuendigungen": 54
+  },
+  {
+   "peer": "peer_63",
+   "software": "/Rapids:2026-11.4df41e42/",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T10:35:19Z",
+   "ankuendigungen": 54
+  },
+  {
+   "peer": "peer_64",
+   "software": "/Bitcoin Cash Node:29.2.1/",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T11:05:31Z",
+   "ankuendigungen": 44
+  },
+  {
+   "peer": "peer_65",
+   "software": "/Vcash:0.1/",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T11:05:32Z",
+   "ankuendigungen": 44
+  },
+  {
+   "peer": "peer_66",
+   "software": "/Bitcoin Cash Node:29.2.1/",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T11:05:33Z",
+   "ankuendigungen": 44
+  },
+  {
+   "peer": "peer_67",
+   "software": "/Bitcoin Cash Node:29.2.1/",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T11:05:35Z",
+   "ankuendigungen": 44
+  },
+  {
+   "peer": "peer_68",
+   "software": "/Bitcoin Cash Node:29.2.1/",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T11:05:35Z",
+   "ankuendigungen": 44
+  },
+  {
+   "peer": "peer_69",
+   "software": "/Bitcoin Cash Node:29.2.1/",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T11:05:36Z",
+   "ankuendigungen": 44
+  },
+  {
+   "peer": "peer_70",
+   "software": "/Vcash:0.1/",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T11:05:37Z",
+   "ankuendigungen": 44
+  },
+  {
+   "peer": "peer_71",
+   "software": "/Rapids:2026-11.4df41e42/",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T11:05:38Z",
+   "ankuendigungen": 44
+  },
+  {
+   "peer": "peer_72",
+   "software": "/Bitcoin Cash Node:29.2.1/",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T11:05:39Z",
+   "ankuendigungen": 44
+  },
+  {
+   "peer": "peer_73",
+   "software": "/Bitcoin Cash Node:29.2.1/",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T11:35:50Z",
+   "ankuendigungen": 31
+  },
+  {
+   "peer": "peer_74",
+   "software": "/Rapids:2026-11.4df41e42/",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T11:35:52Z",
+   "ankuendigungen": 31
+  },
+  {
+   "peer": "peer_75",
+   "software": "/Bitcoin Cash Node:29.2.1/",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T11:35:53Z",
+   "ankuendigungen": 31
+  },
+  {
+   "peer": "peer_76",
+   "software": "/Vcash:0.1/",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T11:35:56Z",
+   "ankuendigungen": 31
+  },
+  {
+   "peer": "peer_77",
+   "software": "/Vcash:0.1/",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T11:35:57Z",
+   "ankuendigungen": 31
+  },
+  {
+   "peer": "peer_78",
+   "software": "/Rapids:2026-11.4df41e42/",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T11:35:58Z",
+   "ankuendigungen": 31
+  },
+  {
+   "peer": "peer_79",
+   "software": "/Bitcoin Cash Node:29.2.1/",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T11:35:58Z",
+   "ankuendigungen": 31
+  },
+  {
+   "peer": "peer_80",
+   "software": "/Bitcoin Cash Node:29.2.1/",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T11:35:59Z",
+   "ankuendigungen": 31
+  },
+  {
+   "peer": "peer_81",
+   "software": "/Bitcoin Cash Node:29.2.1",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T11:36:00Z",
+   "ankuendigungen": 31
+  },
+  {
+   "peer": "peer_82",
+   "software": "/Bitcoin Cash Node:29.2.1/",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T12:06:11Z",
+   "ankuendigungen": 16
+  },
+  {
+   "peer": "peer_83",
+   "software": "/Bitcoin Cash Node:29.2.1/",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T12:06:11Z",
+   "ankuendigungen": 16
+  },
+  {
+   "peer": "peer_84",
+   "software": "/Rapids:2026-11.4df41e42/",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T12:06:12Z",
+   "ankuendigungen": 16
+  },
+  {
+   "peer": "peer_85",
+   "software": "/Bitcoin Cash Node:29.2.1/",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T12:06:14Z",
+   "ankuendigungen": 16
+  },
+  {
+   "peer": "peer_86",
+   "software": "/Bitcoin Cash Node:29.2.1/",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T12:06:16Z",
+   "ankuendigungen": 16
+  },
+  {
+   "peer": "peer_87",
+   "software": "/Bitcoin Cash Node:29.2.1/",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T12:06:17Z",
+   "ankuendigungen": 16
+  },
+  {
+   "peer": "peer_88",
+   "software": "/Bitcoin Cash Node:29.2.1/",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T12:06:17Z",
+   "ankuendigungen": 16
+  },
+  {
+   "peer": "peer_89",
+   "software": "/Bitcoin Cash Node:29.2.1",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T12:06:20Z",
+   "ankuendigungen": 16
+  },
+  {
+   "peer": "peer_90",
+   "software": "/Bitcoin Cash Node:29.2.1",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T12:37:20Z",
+   "ankuendigungen": 6
+  },
+  {
+   "peer": "peer_91",
+   "software": "/Bitcoin Cash Node:29.2.1/",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T12:37:21Z",
+   "ankuendigungen": 6
+  },
+  {
+   "peer": "peer_92",
+   "software": "/Bitcoin Cash Node:29.2.1/",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T12:37:21Z",
+   "ankuendigungen": 6
+  },
+  {
+   "peer": "peer_93",
+   "software": "/Rapids:2026-11.4df41e42/",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T12:37:22Z",
+   "ankuendigungen": 6
+  },
+  {
+   "peer": "peer_94",
+   "software": "/Bitcoin Cash Node:29.2.1/",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T12:37:23Z",
+   "ankuendigungen": 6
+  },
+  {
+   "peer": "peer_95",
+   "software": "/Bitcoin Cash Node:29.2.1/",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T12:37:25Z",
+   "ankuendigungen": 6
+  },
+  {
+   "peer": "peer_96",
+   "software": "/Bitcoin Cash Node:29.2.1/",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T12:37:27Z",
+   "ankuendigungen": 6
+  },
+  {
+   "peer": "peer_97",
+   "software": "/Bitcoin Cash Node:29.2.1/",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T12:37:28Z",
+   "ankuendigungen": 6
+  },
+  {
+   "peer": "peer_98",
+   "software": "/Bitcoin Cash Node:29.2.1/",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T12:37:28Z",
+   "ankuendigungen": 6
+  },
+  {
+   "peer": "peer_99",
+   "software": "/Vcash:0.1/",
+   "version": 70016,
+   "verbunden_utc": "2026-11-24T12:37:28Z",
+   "ankuendigungen": 6
+  }
+ ]
+}
